@@ -1,0 +1,80 @@
+﻿@model Utility.Model.CreateCaseStudyViewModel
+
+@{
+    ViewBag.Title = "CreateCaseSdy";
+    Layout = "~/Views/Shared/_CompUserAccountLayout.cshtml";
+}
+
+<h2>Create Case Study</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    <div class="form-group">
+        <label class="control-label col-md-2" for="AssessmentID">Assesment</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.AssessmentID, new SelectList(Model.assessmentDetails, "AssessmentID", "AssessmentName"), new { htmlAttributes = new { @class = "form-control" } })            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="caseStudy">Case Study:</label>
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.caseStudy, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="caseStudySolutions_1">Solution 1:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.caseStudySolutions_1, new { htmlAttributes = new { @class = "form-control" } })
+            <span>
+                @Html.DropDownListFor(model => model.CompID_1, new SelectList(Model.competencyDetails, "CompID", "CompName"), new { htmlAttributes = new { @class = "form-control" } })                
+            </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="caseStudySolutions_2">Solution 2:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.caseStudySolutions_2, new { htmlAttributes = new { @class = "form-control" } })
+            <span>
+                @Html.DropDownListFor(model => model.CompID_2, new SelectList(Model.competencyDetails, "CompID", "CompName"), new { htmlAttributes = new { @class = "form-control" } })
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="caseStudySolutions_3">Solution 3:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.caseStudySolutions_3, new { htmlAttributes = new { @class = "form-control" } })
+            <span>
+                @Html.DropDownListFor(model => model.CompID_3, new SelectList(Model.competencyDetails, "CompID", "CompName"), new { htmlAttributes = new { @class = "form-control" } })
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2" for="caseStudySolutions_4">Solution 4:</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.caseStudySolutions_4, new { htmlAttributes = new { @class = "form-control" } })
+            <span>
+                @Html.DropDownListFor(model => model.CompID_4, new SelectList(Model.competencyDetails, "CompID", "CompName"), new { htmlAttributes = new { @class = "form-control" } })
+            </span>
+        </div>        
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create Case Study" class="btn btn-default" />
+        </div>
+        <br /><br/>
+        <p><label style="color:red">@ViewBag.msg</label></p>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "CaseStudyList")
+</div>

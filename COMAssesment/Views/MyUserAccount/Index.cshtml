@@ -1,0 +1,133 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: cornsilk;
+            font-family: 'Arial';
+        }
+
+        .login {
+            width: 382px;
+            overflow: hidden;
+            margin: auto;
+            margin: 20 0 0 450px;
+            padding: 80px;
+            background: lavender;
+            border-radius: 15px;
+        }  
+        .button {
+            background-color: #277582;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        h1 {
+            text-align: center;
+            color: #277582;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #277582;
+            padding: 20px;
+        }
+
+        label {
+            color: #277582;
+            font-size: 17px;
+        }
+
+        #uname {
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-radius: 3px;
+            padding-left: 8px;
+        }
+
+        #pwd {
+            width: 300px;
+            height: 30px;
+            border: none;
+            border-radius: 3px;
+            padding-left: 8px;
+        }
+        .uname_required{
+            color:red;
+            display:none;
+        }
+        .pwd_required {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <label id="dis"></label><br />
+    <div class="login">
+        <div>
+            <p style="font-family: fantasy; font-size: 22px; color: #277582; text-align: center; ">iSmart Resume Builder</p>
+            <h2>Login Form</h2>
+        </div>
+        @using (Html.BeginForm())
+        {
+            <label>User Name: </label>@Html.TextBox("uname");
+            <p class="uname_required">Please type user name !</p>
+            <br /><br />
+            <label>Password:&nbsp;&nbsp;</label>@Html.Password("pwd");
+            <p class="pwd_required">Please type password !</p>
+            <br /><br />
+            <input type="submit" class="button" id="login" value="Login" />
+            <br /> <label style="color:red;">@ViewBag.msg</label>
+            <p>@Html.ActionLink("Forgot Password?", "ForgotPwd")</p>
+            <p>@Html.ActionLink("Register Here?", "CreateUser")</p>
+        }
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        $(document).ready(function () {
+            $("#login").click(function (e) {
+                let uname = $("#uname").val();
+                let pwd = $("#pwd").val();
+                let isValidate = true;
+                if (uname == null || uname == "") {
+                    $(".uname_required").show();
+                    isValidate = false;
+                }
+                if (pwd == null || pwd == "") {
+                    $(".pwd_required").show();
+                    isValidate = false;
+                }
+                return isValidate;
+            });
+
+            $("#uname").keydown(function () {
+                $(".uname_required").hide();
+            })
+
+            $("#pwd").keydown(function () {
+                $(".pwd_required").hide();
+            })
+        });
+    </script>
+</body>
+</html>
+

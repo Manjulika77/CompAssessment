@@ -1,0 +1,11 @@
+E:\personal\Project\COMAssesment\BLCompAssessment\obj\Debug\BLCompAssessment.csproj.CoreCompileInputs.cache
+E:\personal\Project\COMAssesment\BLCompAssessment\obj\Debug\BLCompAssessment.csproj.AssemblyReference.cache
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\BLCompAssessment.dll
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\BLCompAssessment.pdb
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\DLCompAssessment.dll
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\Utility.dll
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\DLCompAssessment.pdb
+E:\personal\Project\COMAssesment\BLCompAssessment\bin\Debug\Utility.pdb
+E:\personal\Project\COMAssesment\BLCompAssessment\obj\Debug\BLCompAssessment.csproj.CopyComplete
+E:\personal\Project\COMAssesment\BLCompAssessment\obj\Debug\BLCompAssessment.dll
+E:\personal\Project\COMAssesment\BLCompAssessment\obj\Debug\BLCompAssessment.pdb

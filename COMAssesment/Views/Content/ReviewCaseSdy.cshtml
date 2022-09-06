@@ -1,0 +1,70 @@
+﻿@model Utility.Model.CaseStudySolutionReviewViewModel
+
+@{
+    ViewBag.Title = "ReviewCaseSdy";
+    Layout = "~/Views/Shared/_CompUserAccountLayout.cshtml";
+}
+
+<h2>Content Review</h2>
+<br/>
+<div>
+    <h4 style="color:blueviolet;">
+        @Model.CaseStudy
+    </h4>
+    <br />
+    <table class="table" border="1">
+        <tr>
+            <th>
+                CSSID
+            </th>
+            <th>
+                Solution
+            </th>
+            <th>
+                Competency
+            </th>
+            <th>
+                Created Date
+            </th>
+        </tr>
+
+        @foreach (var item in Model.CaseSdyCompt)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CSSID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Solution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <input type="hidden" name="csid" id="csid" value=@Model.CSID>
+        <input type="hidden" name="createdby" id="createdby" value=@Model.CreatedBy>
+        <div class="">
+            <label class="control-label col-md-2">Comment (if any):</label>
+            <textarea id="ReviewComment" name="ReviewComment" rows="4" cols="50"></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+        <p style="color:red;">@ViewBag.msg</p>
+        <br />
+        <p>
+            @Html.ActionLink("Back to Case Study List", "CaseStudyList")
+        </p>
+        <br/>
+    }
+</div>

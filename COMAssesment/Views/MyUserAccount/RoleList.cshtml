@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Utility.Model.Role>
+
+@{
+    ViewBag.Title = "RoleList";
+    Layout = "~/Views/Shared/_CompUserAccountLayout.cshtml";
+}
+
+<h2>RoleList</h2>
+
+<p>
+    @Html.ActionLink("Create New Role", "CreateRole")
+</p>
+<p>
+    @Html.ActionLink("Back to User List", "UserList")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoleID }) |            
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoleID })
+        </td>
+    </tr>
+}
+
+</table>

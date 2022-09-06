@@ -1,0 +1,6 @@
+E:\personal\Project\COMAssesment\Utility\bin\Debug\Utility.dll
+E:\personal\Project\COMAssesment\Utility\bin\Debug\Utility.pdb
+E:\personal\Project\COMAssesment\Utility\obj\Debug\Utility.csproj.CoreCompileInputs.cache
+E:\personal\Project\COMAssesment\Utility\obj\Debug\Utility.dll
+E:\personal\Project\COMAssesment\Utility\obj\Debug\Utility.pdb
+E:\personal\Project\COMAssesment\Utility\obj\Debug\Utility.csproj.AssemblyReference.cache

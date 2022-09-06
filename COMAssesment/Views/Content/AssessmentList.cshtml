@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Utility.Model.AssessmentDetails>
+
+@{
+    ViewBag.Title = "AssessmentList";
+    Layout = "~/Views/Shared/_CompUserAccountLayout.cshtml";
+}
+
+<h2>Assessment</h2>
+
+<p>
+    @Html.ActionLink("Create New Assessment", "CreateAssessment")
+</p>
+<p>
+    @Html.ActionLink("Assessment User Mapping", "CreateAssessmentUserMapping")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationMin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            Edit
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationMin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditAssessment", new { id=item.AssessmentID })            
+        </td>
+    </tr>
+}
+
+</table>

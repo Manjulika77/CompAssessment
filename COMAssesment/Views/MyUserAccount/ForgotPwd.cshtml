@@ -1,0 +1,165 @@
+﻿@model Utility.Model.ForgotPasswordViewModels
+
+@{
+    Layout = "~/Views/Shared/_AnonymousAccountLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Forgot Password</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .hide{
+            display:none;
+        }
+        .show{
+            display:block;
+        }
+        .uname_required, .otp_required, .pwd_required, .retype-pwd_required, .uname_validate, .pwd_not_matched {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="text-align:center;">Forgot Password ?</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                <p class="uname_required">Please type user name to get OTP!</p>
+                <p class="uname_validate">Given User name is not registered Or not active user!</p>
+            </div>
+        </div>
+        <span class="clicknext" style="margin-left: 39%; margin-top: -6%;">
+            <input type="button" id="nextbtn" name="btnForgot" value="Get OTP" class="clicknext btn btn-default" />
+        </span>
+        <div id="form_next" class="form_next">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OTP, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OTP, new { htmlAttributes = new { @class = "form-control" } })
+                    <p class="otp_required">Please type OTP!</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="New_Password">New Password</label>
+                <div class="col-md-10">
+                    @Html.Password("New_Password")
+                    <p class="pwd_required">Please type Password!</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Retype New Password</label>
+                <div class="col-md-10">
+                    @Html.Password("Retype_pwd")
+                    <p class="retype-pwd_required">Please re-type New Password!</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="resetPwd" name="btnForgot" value="Reset Password" class="btn btn-default" />
+                </div>
+                <p class="pwd_not_matched">New Password haven't matched with Re-typed Password'!</p>
+            </div>
+        </div>
+        <p id="viewMsg" style="color: red; margin-left: 15%;">@ViewBag.msg</p>
+    </div>
+    }
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+<script>
+        $(document).ready(function () {                        
+            $("#clicknext").addClass("show");
+            $("#clicknext").removeClass("hide");
+            $("#form_next").addClass("hide");
+            $("#form_next").removeClass("show");
+            $("#New_Password").addClass("form-control");
+            $("#Retype_pwd").addClass("form-control");
+            
+            $("#nextbtn").click(function (e) {
+                $("#viewMsg").empty();
+                let uname = $("#UserName").val();                
+                if (uname == null || uname == "") {
+                    $(".uname_required").show();                    
+                    return false;
+                } else {
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ValidateUname")',
+                    dataType: 'json',
+                        data: { uname: uname },
+                        success: function (x) {
+                            if (x.isValidated) {
+                                $("#nextbtn").addClass("hide");
+                                $("#nextbtn").removeClass("show");
+                                $("#form_next").addClass("show");
+                                $("#form_next").removeClass("hide");
+                                document.getElementById("UserName").readOnly = true;
+                            } else {
+                                $(".uname_validate").show();
+                            }
+                    }
+                });
+                }
+                return false;
+            });
+
+            $("#resetPwd").click(function () {
+                var otp = $("#OTP").val();
+                var pwd = $("#New_Password").val();
+                var con_pwd = $("#Retype_pwd").val();
+                let isValidate = true;
+                if (otp == null || otp == "") {
+                    $(".otp_required").show();
+                    isValidate = false;
+                }
+                if (pwd == null || pwd == "") {
+                    $(".pwd_required").show();
+                    isValidate = false;
+                } else {
+                    if (pwd != con_pwd) {
+                        $(".pwd_not_matched").show();
+                        isValidate = false;
+                    }
+                }
+                if (con_pwd == null || con_pwd == "") {
+                    $(".retype-pwd_required").show();
+                    isValidate = false;
+                }
+                return isValidate;
+            })
+
+            $("#UserName").keydown(function () {
+                $(".uname_required").hide();
+                $(".uname_validate").hide();
+            })
+            $("#OTP").keydown(function () {
+                $(".otp_required").hide();
+            })
+            $("#New_Password").keydown(function () {
+                $(".pwd_required").hide();
+                $(".pwd_not_matched").hide();
+            })
+            $("#Retype_pwd").keydown(function () {
+                $(".retype-pwd_required").hide();
+                $(".pwd_not_matched").hide();
+            })
+        })
+</script>
+</body>
+</html>

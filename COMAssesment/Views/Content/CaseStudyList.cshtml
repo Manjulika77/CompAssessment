@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Utility.Model.CaseStudyListViewModel>
+
+@{
+    ViewBag.Title = "Case Study List";
+    Layout = "~/Views/Shared/_CompUserAccountLayout.cshtml";
+}
+
+<h2>Case Study List</h2>
+
+<p>
+    @Html.ActionLink("Create New Case Study", "CreateCaseSdy")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CSID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaseStudy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssessmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+           Review Here
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CSID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaseStudy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssessmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <th>
+            @Html.ActionLink("Review", "ReviewCaseSdy", new { id=item.CSID })
+        </th>
+    </tr>
+}
+
+</table>

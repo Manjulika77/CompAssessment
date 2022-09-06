@@ -1,0 +1,9 @@
+E:\personal\Project\COMAssesment\DLCompAssessment\obj\Debug\DLCompAssessment.csproj.AssemblyReference.cache
+E:\personal\Project\COMAssesment\DLCompAssessment\obj\Debug\DLCompAssessment.csproj.CoreCompileInputs.cache
+E:\personal\Project\COMAssesment\DLCompAssessment\bin\Debug\DLCompAssessment.dll
+E:\personal\Project\COMAssesment\DLCompAssessment\bin\Debug\DLCompAssessment.pdb
+E:\personal\Project\COMAssesment\DLCompAssessment\bin\Debug\Utility.dll
+E:\personal\Project\COMAssesment\DLCompAssessment\bin\Debug\Utility.pdb
+E:\personal\Project\COMAssesment\DLCompAssessment\obj\Debug\DLCompAssessment.csproj.CopyComplete
+E:\personal\Project\COMAssesment\DLCompAssessment\obj\Debug\DLCompAssessment.dll
+E:\personal\Project\COMAssesment\DLCompAssessment\obj\Debug\DLCompAssessment.pdb
